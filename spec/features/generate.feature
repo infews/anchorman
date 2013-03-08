@@ -21,4 +21,6 @@ Feature: Generate
     Then the output should contain "commit(s) found"
     And a directory named "anchorman" should exist
     And a file named "anchorman/release_notes.md" should exist
-    And the file "anchorman/release_notes.md" should contain "# Release Notes"
+    And the file "anchorman/release_notes.md" should match /^# Release Notes/
+    And the file "anchorman/release_notes.md" should match /## Summary/
+    And the file "anchorman/release_notes.md" should match /## Changes/

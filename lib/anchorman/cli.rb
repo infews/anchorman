@@ -15,7 +15,7 @@ module Anchorman
       empty_directory 'anchorman'
 
       create_file 'anchorman/release_notes.md' do
-        "# Release Notes\n #{commits.first.sha}"
+        "# Release Notes\n\n ## Summary\n\n ## Changes\n\n #{commits.first.sha}"
       end
 
     end
