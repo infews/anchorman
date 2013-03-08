@@ -1,6 +1,8 @@
 module Anchorman
   class CLI < Thor
 
+    include Thor::Actions
+
     desc "generate", "Generates a draft release notes document"
 
     def generate
@@ -15,6 +17,16 @@ module Anchorman
         puts "No git log found"
       end
 
+      return unless commits.size
+
+      empty_directory 'anchorman'
+
+      create_file 'anchorman/release_notes.md' do
+
+        "# Release Notes\n #{commits.first.sha}"
+      end
+
     end
+
   end
 end
