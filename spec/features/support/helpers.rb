@@ -28,6 +28,7 @@ module Helpers
 
   def commit(message)
     system "touch foo.rb"
+    system "git add ."
     system "git commit -am '#{message}'"
   end
 
