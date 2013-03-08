@@ -4,7 +4,6 @@ module Anchorman
     include Thor::Actions
 
     desc "generate", "Generates a draft release notes document"
-
     def generate
       commits = get_commits
 
@@ -14,8 +13,11 @@ module Anchorman
 
       empty_directory 'anchorman'
 
+      header = "# Release Notes\n\n ## Summary\n\n ## Changes\n\n"
+      notes =  commits.collect {|c| CommitFormatter.format(c) }.join("\n\n")
+
       create_file 'anchorman/release_notes.md' do
-        "# Release Notes\n\n ## Summary\n\n ## Changes\n\n #{commits.first.sha}"
+        header + notes
       end
 
     end
