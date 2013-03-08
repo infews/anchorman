@@ -6,13 +6,15 @@ module Anchorman
     def generate
       commits = begin
         repo = Git.open('.')
-        repo.log
+        commits = repo.log
+        say "#{commits.size} commit(s) found"
+        commits
       rescue ArgumentError
         puts "No git repo found"
-        return
       rescue Git::GitExecuteError
         puts "No git log found"
       end
+
     end
   end
 end
