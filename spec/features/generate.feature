@@ -23,4 +23,4 @@ Feature: Generate
     And a file named "anchorman/release_notes.md" should exist
     And the file "anchorman/release_notes.md" should match /^# Release Notes/
     And the file "anchorman/release_notes.md" should match /## Summary/
-    And the file "anchorman/release_notes.md" should match /## Changes/
+    And the file "anchorman/release_notes.md" should match /## Changes\s+(.)+/
