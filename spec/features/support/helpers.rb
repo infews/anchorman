@@ -21,6 +21,16 @@ module Helpers
     end
   end
 
+  def config_git
+    system "git config user.name Ron Burgundy"
+    system "git config user.email scotchyscotch@example.com"
+  end
+
+  def commit(message)
+    system "touch foo.rb"
+    system "git commit -am '#{message}'"
+  end
+
 end
 
 World Helpers
