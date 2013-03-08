@@ -22,16 +22,21 @@ module Helpers
   end
 
   def config_git
-    system "git config user.name Ron Burgundy"
-    system "git config user.email scotchyscotch@example.com"
+    cd_tmp_aruba do
+      system "git config user.name Ron Burgundy"
+      system "git config user.email scotchyscotch@example.com"
+    end
   end
 
   def commit(message)
-    system "touch foo.rb"
-    system "git add ."
-    system "git commit -am '#{message}'"
+    cd_tmp_aruba do
+      File.open('foo.txt', 'w') do |f|
+        f << message
+      end
+      system "git add ."
+      system "git commit -am '#{message}'"
+    end
   end
-
 end
 
 World Helpers
