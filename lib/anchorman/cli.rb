@@ -10,6 +10,8 @@ module Anchorman
 
       return unless commits.size
 
+      say "#{commits.size} commit(s) found - building notes", :green
+
       empty_directory 'anchorman'
 
       create_file 'anchorman/release_notes.md' do
@@ -23,7 +25,7 @@ module Anchorman
       def get_commits
         repo = Git.open('.')
         log = repo.log
-        say "#{log.size} commit(s) found", :green
+        log.size # this is the line that will throw if no repo or no commits
         log
       rescue ArgumentError
         say 'No git repo found', :red
