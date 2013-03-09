@@ -15,7 +15,13 @@ module Anchorman
     def commit_url(sha)
       return sha unless is_github?
 
-      "#{remote.url[0..-5]}/commits/#{sha}"
+      "[#{sha}](#{github_url_for 'commits', sha})"
+    end
+
+    private
+
+    def github_url_for(*components)
+      [remote.url[0..-5], *components].join('/')
     end
   end
 end

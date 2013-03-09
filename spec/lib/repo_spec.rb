@@ -17,7 +17,7 @@ describe Anchorman::Repo do
     end
 
     it "provides a commit URL" do
-      github_repo.commit_url('abc123').should == "https://github.com/foobar/myrepo/commits/abc123"
+      github_repo.commit_url('abc123').should == "[abc123](https://github.com/foobar/myrepo/commits/abc123)"
     end
   end
 
