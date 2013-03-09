@@ -5,8 +5,8 @@ module Anchorman
 
     desc "generate", "Generates a draft release notes document"
     def generate
-      repo = open_repo
-      commits = repo.log
+      git = open_repo
+      commits = git.log
 
       return unless commits.size
 
@@ -15,7 +15,7 @@ module Anchorman
       empty_directory 'anchorman'
 
       header = "# Release Notes\n\n ## Summary\n\n ## Changes\n\n"
-      formatter = CommitFormatter.new(repo)
+      formatter = CommitFormatter.new(Repo.new(git))
       notes =  commits.collect {|c| formatter.format(c) }.join("\n\n")
 
       create_file 'anchorman/release_notes.md' do
@@ -27,9 +27,9 @@ module Anchorman
     no_tasks do
 
       def open_repo
-        repo = Git.open('.')
-        repo.log.size # this will raise if no repo or no commits
-        repo
+        git = Git.open('.')
+        git.log.size # this will raise if no repo or no commits
+        git
       rescue ArgumentError
         say 'No git repo found', :red
       rescue Git::GitExecuteError
