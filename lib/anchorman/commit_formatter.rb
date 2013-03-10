@@ -15,8 +15,8 @@ module Anchorman
     end
 
     def link_tracker_stories(msg)
-      msg.gsub(/\[(.*)#(\d+)/) do
-        "[#{$1}##{$2}](http://www.pivotaltracker.com/story/#{$2}"
+      msg.gsub(/\[(.*)#(\d+)\]/) do
+        "[#{$1}##{$2}](http://www.pivotaltracker.com/story/#{$2})"
       end
     end
   end

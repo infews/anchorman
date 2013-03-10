@@ -91,7 +91,7 @@ describe Anchorman::CommitFormatter do
     end
 
     it "links to the page for that story" do
-      tracker_note.should match /http:\/\/www.pivotaltracker\.com\/story\/1234/
+      tracker_note.should match /\[Fix #1234\]\(http:\/\/www.pivotaltracker\.com\/story\/1234\)/
     end
 
   end
