@@ -25,6 +25,16 @@ Feature: Notes command
     And the file "anchorman/release_notes.md" should match /## Summary/
     And the file "anchorman/release_notes.md" should match /## Changes\s+(.)+/
 
+  Scenario: Providing a custom filename
+    Given A git repo with commits
+    When I run `anchorman notes --name=foo`
+    Then the output should contain "commit(s) found"
+    And a directory named "anchorman" should exist
+    And a file named "anchorman/foo.md" should exist
+    And the file "anchorman/foo.md" should match /^# Release Notes/
+    And the file "anchorman/foo.md" should match /## Summary/
+    And the file "anchorman/foo.md" should match /## Changes\s+(.)+/
+
   Scenario: Asking for notes from a starting git ref
     Given A repo with plenty of refs
     When I run `anchorman notes --from=tagA`

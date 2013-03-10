@@ -4,7 +4,7 @@ module Anchorman
     include Thor::Actions
 
     desc "notes", "Generates a draft release notes document"
-    method_options from: :string, to: :string
+    method_options from: :string, to: :string, name: "release_notes"
     def notes
       git = open_repo
 
@@ -24,7 +24,7 @@ module Anchorman
       formatter = CommitFormatter.new(Repo.new(git))
       notes =  commits.collect {|c| formatter.format(c) }.join("\n\n")
 
-      create_file 'anchorman/release_notes.md' do
+      create_file "anchorman/#{options[:name]}.md" do
         header + notes
       end
 
