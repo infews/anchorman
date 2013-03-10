@@ -12,22 +12,16 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{Executable that scans your git log for specific release tags and builds a directory of nicely formatted set of Markdown files ready for detailed editing into release notes.}
   gem.homepage      = "http://github.com/infews/anchorman"
 
-  gem.files         = `git ls-files`.split($/)
+  gem.files        = Dir.glob("{bin,lib,release_notes}/**/*") + %w(LICENSE README.md ROADMAP.md CHANGELOG.md)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
   gem.add_dependency "git"
-  gem.add_dependency "github"
   gem.add_dependency "thor"
-  gem.add_dependency "rdiscount"
-
 
   gem.add_development_dependency "rake"
   gem.add_development_dependency "rspec"
   gem.add_development_dependency "cucumber"
   gem.add_development_dependency "aruba"
-  gem.add_development_dependency "aruba-doubles"
 end
-
-

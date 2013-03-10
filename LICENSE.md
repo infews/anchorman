@@ -1,4 +1,4 @@
-Copyright (c) 2013 infews
+Copyright © 2013 infews
 
 MIT License
 

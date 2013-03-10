@@ -1,6 +1,16 @@
 # Anchorman
 
-TODO: Write a gem description
+_When you need trusted news, you turn to an anchorman._
+
+Simply put, Anchorman scans your commit log and builds release notes for your project.
+
+These notes are build in [Markdown][md] and live in a `release_notes` directory off of your project root. When viewed locally they will be readable. When viewed on Github they will be rendered as nice HTML.
+
+There is also an option to generate HTML versions of these files using [Github Flavored Markdown][gfm] for posting/hosting elsewhere.
+
+If the repo is cloned from Github commit SHAs will be linked to Github's commits page.
+
+If a commit message includes syntax for manipulating a story at [Pivotal Tracker's][pt] via a post-commit hook, the story id will be linked to Tracker.
 
 ## Installation
 
@@ -18,12 +28,42 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Anchorman is fairly simple-minded. It generates files with a little bit of formatting, but not much. The resulting files are meant as good starting points for more human-readable release notes.
+
+    $ anchorman notes
+
+Generates a `release_notes/release_notes.md` off of the root of your project. Has a simple header and will have a bullet list of commit information from your entire repo.
+
+    $ anchorman notes --from=<ref> --to=<ref>
+
+Builds notes only for commits between two git refs. If not supplied, `to` defaults to `HEAD`. Can be combined with other options.
+
+    $ anchorman notes --name=<filename>
+
+Writes out notes to `release_notes/<filename>.md`.Can be combined with other options.
+
+### coming soon
+
+    $ anchorman html
+
+Builds `release_notes/html` with html versions of all Markdown files in `release_notes`
+
+Samples can be found in this repository.     
+
+
+
 
 ## Contributing
 
+1. Checkout the [backlog at Pivotal Tracker][backlog]
 1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+1. Create your feature branch (`git checkout -b my-new-feature`)
+1. Commit your changes (`git commit -am 'Add some feature'`)
+1. Push to the branch (`git push origin my-new-feature`)
+1. Create new Pull Request
+
+
+[pt]: http://www.pivotaltracker.com
+[md]: http://daringfireball.net/projects/markdown/
+[gfm]: https://help.github.com/articles/github-flavored-markdown
+[backlog]: https://www.pivotaltracker.com/projects/776269
