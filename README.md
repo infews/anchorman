@@ -1,4 +1,5 @@
 # Anchorman
+[![Build Status](https://travis-ci.org/[YOUR_GITHUB_USERNAME]/[YOUR_PROJECT_NAME].png)](https://travis-ci.org/[infews]/[anchorman])
 
 _When you need trusted news, you turn to an anchorman._
 
