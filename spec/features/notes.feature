@@ -19,7 +19,7 @@ Feature: Notes command
     Given A git repo with commits
     When I run `anchorman notes`
     Then the output should contain "commit(s) found"
-    And a directory named "anchorman" should exist
+    And a directory named "release_notes" should exist
     And a file named "release_notes/release_notes.md" should exist
     And the file "release_notes/release_notes.md" should match /^# Release Notes/
     And the file "release_notes/release_notes.md" should match /## Summary/
@@ -29,28 +29,28 @@ Feature: Notes command
     Given A git repo with commits
     When I run `anchorman notes --name=foo`
     Then the output should contain "commit(s) found"
-    And a directory named "anchorman" should exist
-    And a file named "anchorman/foo.md" should exist
-    And the file "anchorman/foo.md" should match /^# Release Notes/
-    And the file "anchorman/foo.md" should match /## Summary/
-    And the file "anchorman/foo.md" should match /## Changes\s+(.)+/
+    And a directory named "release_notes" should exist
+    And a file named "release_notes/foo.md" should exist
+    And the file "release_notes/foo.md" should match /^# Release Notes/
+    And the file "release_notes/foo.md" should match /## Summary/
+    And the file "release_notes/foo.md" should match /## Changes\s+(.)+/
 
   Scenario: Asking for notes from a starting git ref
     Given A repo with plenty of refs
     When I run `anchorman notes --from=tagA`
     Then the output should contain "2 commit(s) found"
-    And a directory named "anchorman" should exist
-    And a file named "anchorman/release_notes.md" should exist
-    And the file "anchorman/release_notes.md" should match /^# Release Notes/
-    And the file "anchorman/release_notes.md" should match /## Summary/
-    And the file "anchorman/release_notes.md" should match /## Changes\s+(.)+/
+    And a directory named "release_notes" should exist
+    And a file named "release_notes/release_notes.md" should exist
+    And the file "release_notes/release_notes.md" should match /^# Release Notes/
+    And the file "release_notes/release_notes.md" should match /## Summary/
+    And the file "release_notes/release_notes.md" should match /## Changes\s+(.)+/
 
   Scenario: Asking for notes from a starting and ending git ref
     Given A repo with plenty of refs
     When I run `anchorman notes --from=tagA --to=tagB`
     Then the output should contain "1 commit(s) found"
-    And a directory named "anchorman" should exist
-    And a file named "anchorman/release_notes.md" should exist
-    And the file "anchorman/release_notes.md" should match /^# Release Notes/
-    And the file "anchorman/release_notes.md" should match /## Summary/
-    And the file "anchorman/release_notes.md" should match /## Changes\s+(.)+/
+    And a directory named "release_notes" should exist
+    And a file named "release_notes/release_notes.md" should exist
+    And the file "release_notes/release_notes.md" should match /^# Release Notes/
+    And the file "release_notes/release_notes.md" should match /## Summary/
+    And the file "release_notes/release_notes.md" should match /## Changes\s+(.)+/
