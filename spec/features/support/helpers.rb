@@ -23,8 +23,8 @@ module Helpers
 
   def config_git
     cd_tmp_aruba do
-      system "git config user.name Ron Burgundy"
-      system "git config user.email scotchyscotch@example.com"
+      system "git config --local user.name Ron Burgundy"
+      system "git config --local user.email scotchyscotch@example.com"
     end
   end
 
