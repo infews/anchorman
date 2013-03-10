@@ -3,10 +3,16 @@ module Anchorman
 
     include Thor::Actions
 
-    desc "generate", "Generates a draft release notes document"
-    def generate
+    desc "notes", "Generates a draft release notes document"
+    method_options from: :string, to: :string
+    def notes
       git = open_repo
-      commits = git.log
+
+      commits = if options[:from]
+                  git.log.between options[:from], options[:to]
+                else
+                  git.log
+                end
 
       return unless commits.size
 
@@ -14,7 +20,7 @@ module Anchorman
 
       empty_directory 'anchorman'
 
-      header = "# Release Notes\n\n ## Summary\n\n ## Changes\n\n"
+      header = "# Release Notes\n\n## Summary\n\n## Changes\n\n"
       formatter = CommitFormatter.new(Repo.new(git))
       notes =  commits.collect {|c| formatter.format(c) }.join("\n\n")
 

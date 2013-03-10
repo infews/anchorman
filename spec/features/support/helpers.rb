@@ -37,6 +37,13 @@ module Helpers
       system "git commit -am '#{message}'"
     end
   end
+
+  def tag(name)
+    cd_tmp_aruba do
+      system "git tag #{name}"
+    end
+  end
+
 end
 
 World Helpers
