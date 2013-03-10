@@ -18,13 +18,13 @@ module Anchorman
 
       say "#{commits.size} commit(s) found - building notes", :green
 
-      empty_directory 'anchorman'
+      empty_directory 'release_notes'
 
       header = "# Release Notes\n\n## Summary\n\n## Changes\n\n"
       formatter = CommitFormatter.new(Repo.new(git))
       notes =  commits.collect {|c| formatter.format(c) }.join("\n\n")
 
-      create_file "anchorman/#{options[:name]}.md" do
+      create_file "release_notes/#{options[:name]}.md" do
         header + notes
       end
 
