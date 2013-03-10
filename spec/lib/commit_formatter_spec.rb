@@ -32,7 +32,7 @@ describe Anchorman::CommitFormatter do
   describe "when formatting a commit message that came from a github remote" do
     subject(:github_note) do
       repo = double("repo")
-      repo.should_receive(:commit_url).with("abc123").and_return("[abc123](http://github.com/foobar/myrepo/commits/abc123)")
+      repo.should_receive(:commit_url).with("abc123").and_return("[abc123](http://github.com/foobar/myrepo/commit/abc123)")
 
       author = double(:author,
                       name: "Ron Burgundy",
@@ -46,7 +46,7 @@ describe Anchorman::CommitFormatter do
     end
 
     it "links the SHA to the github commit" do
-      github_note.should match /^\* SHA: \[abc123\]\(http:\/\/github\.com\/foobar\/myrepo\/commits\/abc123\)/
+      github_note.should match /^\* SHA: \[abc123\]\(http:\/\/github\.com\/foobar\/myrepo\/commit\/abc123\)/
     end
 
   end
@@ -54,7 +54,7 @@ describe Anchorman::CommitFormatter do
   describe "when formatting a commit message with a github Issue 'Fixes' message" do
     subject(:github_note_with_issue) do
       repo = double("repo")
-      repo.should_receive(:commit_url).with("abc123").and_return("[abc123](http://github.com/foobar/myrepo/commits/abc123)")
+      repo.should_receive(:commit_url).with("abc123").and_return("[abc123](http://github.com/foobar/myrepo/commit/abc123)")
       repo.should_receive(:issues_url).with("12").and_return("http://github.com/foobar/myrepo/issues/12")
 
       author = double(:author,

@@ -15,7 +15,7 @@ module Anchorman
     def commit_url(sha)
       return sha unless is_github?
 
-      "[#{sha}](#{github_url_for 'commits', sha})"
+      "[#{sha}](#{github_url_for 'commit', sha})"
     end
 
     private
