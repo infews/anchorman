@@ -24,3 +24,7 @@ Given /^A repo with plenty of refs$/ do
   tag "tagB"
   commit "This is yet another commit"
 end
+
+Then /^the file "([^"]*)" should match the notes header$/ do |file|
+  check_file_content(file, "# Release Notes\n\n## Summary\n\n## Changes\n\n", true)
+end

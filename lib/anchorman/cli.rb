@@ -1,4 +1,6 @@
 module Anchorman
+  NOTES_HEADER = "# Release Notes\n\n## Summary\n\n## Changes\n\n"
+
   class CLI < Thor
 
     include Thor::Actions
@@ -20,7 +22,7 @@ module Anchorman
 
       empty_directory 'release_notes'
 
-      header = "# Release Notes\n\n## Summary\n\n## Changes\n\n"
+      header = NOTES_HEADER
       formatter = CommitFormatter.new(Repo.new(git))
       notes =  commits.collect {|c| formatter.format(c) }.join("\n\n")
 
