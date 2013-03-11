@@ -21,7 +21,9 @@ Feature: Notes command
     Then the output should contain "commit(s) found"
     And a directory named "release_notes" should exist
     And a file named "release_notes/release_notes.md" should exist
-    And the file "release_notes/release_notes.md" should match the notes header
+    And the file "release_notes/release_notes.md" should contain the notes header
+    And the file "release_notes/release_notes.md" should match /SHA:/
+    And the file "release_notes/release_notes.md" should contain the notes footer
 
   Scenario: Providing a custom filename
     Given A git repo with commits
@@ -29,7 +31,9 @@ Feature: Notes command
     Then the output should contain "commit(s) found"
     And a directory named "release_notes" should exist
     And a file named "release_notes/foo.md" should exist
-    And the file "release_notes/foo.md" should match the notes header
+    And the file "release_notes/foo.md" should contain the notes header
+    And the file "release_notes/foo.md" should match /SHA:/
+    And the file "release_notes/foo.md" should contain the notes footer
 
   Scenario: Asking for notes from a starting git ref
     Given A repo with plenty of refs
@@ -37,7 +41,9 @@ Feature: Notes command
     Then the output should contain "2 commit(s) found"
     And a directory named "release_notes" should exist
     And a file named "release_notes/release_notes.md" should exist
-    And the file "release_notes/release_notes.md" should match the notes header
+    And the file "release_notes/release_notes.md" should contain the notes header
+    And the file "release_notes/release_notes.md" should match /SHA:/
+    And the file "release_notes/release_notes.md" should contain the notes footer
 
   Scenario: Asking for notes from a starting and ending git ref
     Given A repo with plenty of refs
@@ -45,4 +51,6 @@ Feature: Notes command
     Then the output should contain "1 commit(s) found"
     And a directory named "release_notes" should exist
     And a file named "release_notes/release_notes.md" should exist
-    And the file "release_notes/release_notes.md" should match the notes header
+    And the file "release_notes/release_notes.md" should contain the notes header
+    And the file "release_notes/release_notes.md" should match /SHA:/
+    And the file "release_notes/release_notes.md" should contain the notes footer

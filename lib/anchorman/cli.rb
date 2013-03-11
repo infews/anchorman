@@ -1,5 +1,6 @@
 module Anchorman
   NOTES_HEADER = "# Release Notes\n\n## Summary\n\n## Changes\n\n"
+  NOTES_FOOTER = "\n\n\------\n\n_Release Notes generated with [Anchorman](http://github.com/infews/anchorman)_"
 
   class CLI < Thor
 
@@ -22,12 +23,11 @@ module Anchorman
 
       empty_directory 'release_notes'
 
-      header = NOTES_HEADER
       formatter = CommitFormatter.new(Repo.new(git))
       notes =  commits.collect {|c| formatter.format(c) }.join("\n\n")
 
       create_file "release_notes/#{options[:name]}.md" do
-        header + notes
+        NOTES_HEADER + notes + NOTES_FOOTER
       end
 
     end
