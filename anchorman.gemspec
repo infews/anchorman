@@ -19,6 +19,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_dependency "git"
+  gem.add_dependency "github-markdown"
   gem.add_dependency "thor"
 
   gem.add_development_dependency "rake"

@@ -25,6 +25,15 @@ Given /^A repo with plenty of refs$/ do
   commit "This is yet another commit"
 end
 
+Given /^A directory without a release_notes directory$/ do
+  clean_tmp_dir
+end
+
+Given /^A directory with a release_notes directory$/ do
+  clean_tmp_dir
+  copy_notes_fixtures
+end
+
 Then /^the file "([^"]*)" should contain the notes header$/ do |file|
   check_file_content(file, "# Release Notes\n\n## Summary\n\n## Changes\n\n", true)
 end
