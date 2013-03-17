@@ -43,15 +43,11 @@ Builds notes only for commits between two git refs. If not supplied, `to` defaul
 
 Writes out notes to `release_notes/<filename>.md`.Can be combined with other options.
 
-### coming soon
-
     $ anchorman html
 
 Builds `release_notes/html` with html versions of all Markdown files in `release_notes`
 
 Samples can be found in this repository.     
-
-
 
 
 ## Contributing
