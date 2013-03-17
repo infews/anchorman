@@ -49,6 +49,10 @@ Builds `release_notes/html` with html versions of all Markdown files in `release
 
 Samples can be found in this repository.     
 
+## Release Notes
+
+[Notes live in the repo](https://github.com/infews/anchorman/blob/master/release_notes/release_notes.md). Generated with Anchorman and then made readable and useful to humans.
+
 
 ## Contributing
 
