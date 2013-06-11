@@ -19,4 +19,4 @@ First Release. A real MVP.
 
 ------
 
-Release Notes generated with [Anchorman](http://github.com/infews/anchorman)_
+Release Notes generated with _[Anchorman](http://github.com/infews/anchorman)_
