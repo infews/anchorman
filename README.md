@@ -5,7 +5,7 @@ _When you need trusted news, you turn to an anchorman._
 
 Simply put, Anchorman scans your commit log and builds release notes for your project.
 
-These notes are build in [Markdown][md] and live in a `release_notes` directory off of your project root. When viewed locally they will be readable. When viewed on Github they will be rendered as nice HTML.
+These notes are build in [Markdown][md] and live in a `release_notes` directory off of your project root. The expected usage is to have one file per release, named appropriately,  in this directory. When viewed locally they will be readable. When viewed on Github they will be rendered as nice HTML.
 
 There is also an option to generate HTML versions of these files using [Github Flavored Markdown][gfm] for posting/hosting elsewhere.
 
@@ -29,19 +29,19 @@ Or install it yourself as:
 
 ## Usage
 
-Anchorman is fairly simple-minded. It generates files with a little bit of formatting, but not much. The resulting files are meant as good starting points for more human-readable release notes.
+Anchorman is fairly simple-minded. It generates files with a little bit of formatting, but not much.  The resulting files are meant as good starting points for more human-readable release notes.
 
     $ anchorman notes
 
-Generates a `release_notes/release_notes.md` off of the root of your project. Has a simple header and will have a bullet list of commit information from your entire repo.
+Generates a `release_notes/release_notes.md` off of the root of your project.  Has a simple header and will have a bullet list of commit information from your entire repo.
 
     $ anchorman notes --from=<ref> --to=<ref>
 
-Builds notes only for commits between two git refs. If not supplied, `to` defaults to `HEAD`. Can be combined with other options.
+Builds notes only for commits between two git refs. If not supplied, `to` defaults to `HEAD`.  Can be combined with other options.
 
     $ anchorman notes --name=<filename>
 
-Writes out notes to `release_notes/<filename>.md`.Can be combined with other options.
+Writes out notes to `release_notes/<filename>.md`.  Can be combined with other options.
 
     $ anchorman html
 
