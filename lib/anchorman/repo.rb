@@ -21,7 +21,8 @@ module Anchorman
     private
 
     def github_url_for(*components)
-      [remote.url[0..-5], *components].join('/')
+      repo_string = remote.url.match(/github\.com[\/:](.*)\.git$/)[1]
+      ["https://github.com", repo_string, *components].join('/')
     end
   end
 end

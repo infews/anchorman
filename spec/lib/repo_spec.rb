@@ -3,10 +3,13 @@ require 'spec_helper'
 describe Anchorman::Repo do
 
   describe "when origin is github" do
+    let(:remote_info) {
+      double("git remote",
+        url: "https://github.com/foobar/myrepo.git",
+        name: "origin")
+    }
     subject(:github_repo) do
-      remote = double("git remote",
-                      url: "https://github.com/foobar/myrepo.git",
-                      name: "origin")
+      remote = remote_info
       repo = double("repo", remote: remote)
 
       Anchorman::Repo.new(repo)
@@ -18,6 +21,17 @@ describe Anchorman::Repo do
 
     it "provides a commit URL" do
       github_repo.commit_url('abc123').should == "[abc123](https://github.com/foobar/myrepo/commit/abc123)"
+    end
+
+    context "when the remote is using SSH instead of a URL" do
+      let(:remote_info) { double("git remote",
+        url: "git@github.com:foobar/myrepo.git",
+        name: "origin")
+      }
+
+      it "still returns a URL" do
+        github_repo.commit_url('abc123').should == "[abc123](https://github.com/foobar/myrepo/commit/abc123)"
+      end
     end
   end
 
