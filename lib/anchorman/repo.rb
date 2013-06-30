@@ -18,6 +18,14 @@ module Anchorman
       "[#{sha}](#{github_url_for 'commit', sha})"
     end
 
+    def name
+      Octokit::Repository.from_url(git_repo.remote.url[0..-5]).name
+    end
+
+    def username
+      Octokit::Repository.from_url(git_repo.remote.url[0..-5]).user
+    end
+
     private
 
     def github_url_for(*components)

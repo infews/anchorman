@@ -23,6 +23,14 @@ describe Anchorman::Repo do
       github_repo.commit_url('abc123').should == "[abc123](https://github.com/foobar/myrepo/commit/abc123)"
     end
 
+    it "provides a repo name" do
+      github_repo.name.should == "myrepo"
+    end
+
+    it "provides a username" do
+      github_repo.username.should == "foobar"
+    end
+
     context "when the remote is using SSH instead of a URL" do
       let(:remote_info) { double("git remote",
         url: "git@github.com:foobar/myrepo.git",
