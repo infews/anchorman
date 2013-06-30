@@ -1,6 +1,6 @@
 module Anchorman
   NOTES_HEADER = "# Release Notes\n\n## Summary\n\n## Changes\n\n"
-  NOTES_FOOTER = "\n\n\------\n\n_Release Notes generated with [Anchorman](http://github.com/infews/anchorman)_"
+  NOTES_FOOTER = "\n\n------\n\n_Release Notes generated with _[Anchorman](http://github.com/infews/anchorman)_"
 
   class CLI < Thor
 
