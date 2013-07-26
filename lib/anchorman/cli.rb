@@ -13,9 +13,9 @@ module Anchorman
       git = open_repo
 
       commits = if options[:from]
-                  git.log.between options[:from], options[:to]
+                  git.log(nil).between options[:from], options[:to]
                 else
-                  git.log
+                  git.log(nil)
                 end
 
       return unless commits.size
