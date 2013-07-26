@@ -25,6 +25,16 @@ Given /^A repo with plenty of refs$/ do
   commit "This is yet another commit"
 end
 
+Given /^A repo with plenty of commits$/ do
+  clean_tmp_dir
+  init_git_repo
+  config_git
+    
+  (1..31).each do |i|
+      commit "This is commit ##{i}"
+  end
+end
+
 Given /^A directory without a release_notes directory$/ do
   clean_tmp_dir
 end
