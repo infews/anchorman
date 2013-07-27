@@ -54,3 +54,13 @@ Feature: Notes command
     And the file "release_notes/release_notes.md" should contain the notes header
     And the file "release_notes/release_notes.md" should match /SHA:/
     And the file "release_notes/release_notes.md" should contain the notes footer
+
+  Scenario: Asking for notes should give you all the commits in the repo
+    Given A repo with plenty of commits
+    When I run `anchorman notes`
+    Then the output should contain "31 commit(s) found"
+    And a directory named "release_notes" should exist
+    And a file named "release_notes/release_notes.md" should exist
+    And the file "release_notes/release_notes.md" should contain the notes header
+    And the file "release_notes/release_notes.md" should match /SHA:/
+    And the file "release_notes/release_notes.md" should contain the notes footer
