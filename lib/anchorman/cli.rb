@@ -24,7 +24,7 @@ module Anchorman
 
       empty_directory 'release_notes'
 
-      formatter = CommitFormatter.new(Repo.new(git))
+      formatter = CommitFormatter.new
       notes = commits.collect { |c| formatter.format(c) }.join("\n\n")
 
       create_file "release_notes/#{options[:name]}.md" do
