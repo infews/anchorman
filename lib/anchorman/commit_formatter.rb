@@ -2,8 +2,8 @@ module Anchorman
   class CommitFormatter < Struct.new(:repo)
 
     def format(commit)
-      note = "* SHA: #{repo.commit_url(commit.sha)}\n"
-      note << "    * #{format_message(commit.message)}\n"
+      note = "* #{format_message(commit.message)}\n"
+      note << "    * SHA: #{repo.commit_url(commit.sha)}\n"
       note << "    * #{commit.author.name}, #{commit.author.email}\n"
       note
     end
