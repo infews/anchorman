@@ -17,7 +17,7 @@ describe Anchorman::CommitFormatter do
     end
 
     it "includes the SHA" do
-      basic_note.should match /^\* SHA: abc123/
+      basic_note.should match /\* SHA: abc123/
     end
 
     it "includes the commit message" do
@@ -46,7 +46,7 @@ describe Anchorman::CommitFormatter do
     end
 
     it "links the SHA to the github commit" do
-      github_note.should match /^\* SHA: \[abc123\]\(http:\/\/github\.com\/foobar\/myrepo\/commit\/abc123\)/
+      github_note.should match /\* SHA: \[abc123\]\(http:\/\/github\.com\/foobar\/myrepo\/commit\/abc123\)/
     end
 
   end
