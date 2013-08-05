@@ -20,7 +20,6 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency "git"
   gem.add_dependency "github"
-  gem.add_dependency "github-markdown"
   gem.add_dependency "octokit"
   gem.add_dependency "thor"
 
@@ -28,4 +27,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "rspec"
   gem.add_development_dependency "cucumber"
   gem.add_development_dependency "aruba"
+  gem.add_development_dependency "vcr"
+  gem.add_development_dependency "webmock"
 end

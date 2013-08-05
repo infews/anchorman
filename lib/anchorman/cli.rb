@@ -42,10 +42,12 @@ module Anchorman
 
       empty_directory File.join('release_notes', 'html')
 
+      url = Git.open('.').remote.url
+
       notes.each do |n|
-        html_file_name = "#{File.basename(n)[0..-4]}.html"
-        create_file(File.join 'release_notes', 'html', html_file_name) do
-          GitHub::Markdown.render_gfm(File.read(n))
+        converter = HtmlConverter.new(path: n, converter: Octokit, repo: GitHubRepo.new(url))
+        create_file(File.join 'release_notes', 'html', converter.filename) do
+          converter.html
         end
       end
     end

@@ -28,6 +28,12 @@ module Helpers
     end
   end
 
+  def set_git_remote
+    cd_tmp_aruba do
+      system "git remote add origin http://github.com/infews/anchorman.git"
+    end
+  end
+
   def commit(message)
     cd_tmp_aruba do
       File.open('foo.txt', 'w') do |f|

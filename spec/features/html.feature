@@ -9,6 +9,7 @@ Feature: html command
     Then the output should contain "No release_notes directory found"
     Then the output should contain "Run 'anchorman notes' to generate release notes"
 
+    @github_markdown
   Scenario: Release Notes present
     Given A directory with a release_notes directory
     When I run `anchorman html`

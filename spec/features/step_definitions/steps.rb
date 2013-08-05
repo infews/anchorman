@@ -41,6 +41,9 @@ end
 
 Given /^A directory with a release_notes directory$/ do
   clean_tmp_dir
+  init_git_repo
+  config_git
+  set_git_remote
   copy_notes_fixtures
 end
 
