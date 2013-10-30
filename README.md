@@ -5,7 +5,7 @@ _When you need trusted news, you turn to an anchorman._
 
 Simply put, Anchorman scans your commit log and builds release notes for your project.
 
-These notes are build in [Markdown][md] and live in a `release_notes` directory off of your project root. The expected usage is to have one file per release, named appropriately,  in this directory. When viewed locally they will be readable. When viewed on Github they will be rendered as nice HTML.
+These notes are built in [Markdown][md] and live in a `release_notes` directory off of your project root. The expected usage is to have one file per release, named appropriately,  in this directory. When viewed locally they will be readable. When viewed on Github they will be rendered as nice HTML.
 
 There is also an option to generate HTML versions of these files using [Github Flavored Markdown][gfm] for posting/hosting elsewhere.
 
